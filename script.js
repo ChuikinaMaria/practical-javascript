@@ -1,9 +1,18 @@
 let todoList = {
     todos: [],
-    displayTodos: function() {console.log(this.todos)},
+    displayTodos: function() {
+       // console.log(this.todos)
+        if (this.todos.length === 0) {console.log('No todos to display');
+    } else {
+    for (let i=0; i<this.todos.length; i++){        
+        let a = (this.todos[i].completed)? 'completed': 'incompleted'; 
+        console.log(this.todos[i].name,':', a);
+    }
+}
+},
     addTodo: function(name){
         this.todos.push({
-            name: 'newTodos',
+            name: name,
             completed: false});
         this.displayTodos()},
     changeTodo: function(num, name) {
