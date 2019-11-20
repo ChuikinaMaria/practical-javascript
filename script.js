@@ -5,8 +5,8 @@ let todoList = {
         if (this.todos.length === 0) {console.log('No todos to display');
     } else {
     for (let i=0; i<this.todos.length; i++){        
-        let a = (this.todos[i].completed)? 'completed': 'incompleted'; 
-        console.log(this.todos[i].name,':', a);
+        let a = (this.todos[i].completed)? '[x]': '[ ]'; 
+        console.log(a, this.todos[i].name);
     }
 }
 },
