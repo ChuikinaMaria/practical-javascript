@@ -1,7 +1,7 @@
 let todoList = {
     todos: [],
     displayTodos: function() {
-       // console.log(this.todos)
+        console.log('My todos:');
         if (this.todos.length === 0) {console.log('No todos to display');
     } else {
     for (let i=0; i<this.todos.length; i++){        
