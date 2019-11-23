@@ -2,11 +2,9 @@ let todoList = {
     todos: [],
     createTodos: function(num) {
         for (let i=0; i<num; i++) {
-            this.todos.push({
-                name: `item ${i}`,
-                completed: false});;
+            this.addTodo(`item ${i}`);
         }    
-     this.displayTodos();
+        view.displayTodos();
     },
     displayTodos: function() {
         console.log('My todos:');
@@ -21,17 +19,17 @@ let todoList = {
         this.todos.push({
             name: name,
             completed: false});
-        this.displayTodos()},
+            view.displayTodos()},
     changeTodo: function(num, name) {
         this.todos[num].name = name;
-        this.displayTodos()},
+        view.displayTodos()},
     deleteTodo: function(num){
         this.todos.splice(num, 1);
-        this.displayTodos();},
+        view.displayTodos();},
     completed: function(num){
         let a = this.todos[num].completed
         this.todos[num].completed = !a;
-        this.displayTodos()},
+        view.displayTodos()},
     allCompleted: function() {
         let totalTodos = this.todos.length;
         let completedTodos = 0;
@@ -49,7 +47,7 @@ let todoList = {
                 this.todos[i].completed = true;               
         }
     }
-            this.displayTodos();
+            view.displayTodos();
     }
 };
 
@@ -78,6 +76,26 @@ let handlers = {
         let completeTodoNum = document.getElementById('completeTodoNum');
         todoList.completed(completeTodoNum.value);
         completeTodoNum.value = '';
-    }
-    
+    }       
 }
+
+let view = {
+    displayTodos: function() {
+        let myTodos = document.getElementById('myTodos');
+        myTodos.innerText = 'My todos:';
+        let noTodos = document.getElementById('noTodos');
+        if (todoList.todos.length ===0){ noTodos.innerText = 'No Todos'};
+        let todosUl = document.querySelector('ul');
+        todosUl.innerHTML = '';
+        for (let i=0; i<todoList.todos.length; i++){
+            let todoLi = document.createElement('li');
+            if (todoList.todos[i].completed === true) {
+                todoLi.innerText = `[x] ${todoList.todos[i].name}`
+            } else {todoLi.innerText = `[ ] ${todoList.todos[i].name}`}
+            todosUl.appendChild(todoLi);
+        
+             
+    }
+}
+
+};
