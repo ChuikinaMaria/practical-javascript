@@ -23,7 +23,7 @@ let todoList = {
             completed: false});
         this.displayTodos()},
     changeTodo: function(num, name) {
-        this.todos[num].newTodos = name;
+        this.todos[num].name = name;
         this.displayTodos()},
     deleteTodo: function(num){
         this.todos.splice(num, 1);
@@ -52,11 +52,32 @@ let todoList = {
             this.displayTodos();
     }
 };
-let displayTodosButton = document.getElementById('displayTodosButton');
-displayTodosButton.addEventListener('click', function(){
-    todoList.displayTodos();
-});
-let toggleAllButton = document.getElementById('toggleAllButton');
-toggleAllButton.addEventListener('click', function(){
-    todoList.allCompleted();
-});
+
+let handlers = {
+    displayTodos: function (){todoList.displayTodos()},
+    allCompleted: function (){todoList.allCompleted()},
+    addTodo: function() {
+        let addTodoInput = document.getElementById('addTodoInput');
+        todoList.addTodo(addTodoInput.value)
+        addTodoInput.value = ''},
+    createTodos: function (){
+        let numOfTodos = document.getElementById('numOfTodos');
+        todoList.createTodos(numOfTodos.valueAsNumber);
+        numOfTodos.value = ''},
+    changeTodo: function() {
+        let changeTodoNum = document.getElementById('changeTodoNum');
+        let changeTodoName = document.getElementById('changeTodoName');
+        todoList.changeTodo(changeTodoNum.value, changeTodoName.value);
+        changeTodoNum.value = '';
+        changeTodoName.value = '';},
+    deleteTodo: function() {
+        let deleteTodoNum = document.getElementById('deleteTodoNum');
+        todoList.deleteTodo(deleteTodoNum.value);
+        deleteTodoNum.value = ''},
+    completed: function() {
+        let completeTodoNum = document.getElementById('completeTodoNum');
+        todoList.completed(completeTodoNum.value);
+        completeTodoNum.value = '';
+    }
+    
+}

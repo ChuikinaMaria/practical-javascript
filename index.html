@@ -10,8 +10,34 @@
 </head>
 <body>
     <h1>Todo List</h1>
-    <button id='displayTodosButton'>Display Todos</button>
-    <button id='toggleAllButton'>Toggle All</button>
+    <div>
+        <button onclick='handlers.displayTodos()'>Display Todos</button>
+        <button onclick='handlers.allCompleted()'>Toggle All</button>
+    </div>
+    <div>
+        <button onclick='handlers.createTodos()'>Create test todos</button>
+        <input id='numOfTodos' type='number'>
+    </div>
+    <div>
+        <button onclick='handlers.addTodo()'>Add</button>
+        <input id='addTodoInput' type='text'>
+    </div>
+    <div>
+        <button onclick='handlers.changeTodo()'>Change Todo</button>
+        <input id='changeTodoNum' type='number'>
+        <input id='changeTodoName' type='text'>
+    </div>
+    <div>
+        <button onclick='handlers.deleteTodo()'>Delete Todo</button>
+        <input id='deleteTodoNum' type='number'>
+    </div>
+    <div>
+        <button onclick='handlers.completed()'>Task is completed</button>
+        <input id='completeTodoNum' type='number'>
+    </div>
+
+
+    
 
     <script src='./script.js'></script>
     
