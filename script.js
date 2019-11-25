@@ -122,13 +122,17 @@ let view = {
     deleteButton.innerText = "delete";
     deleteButton.className = "deleteButton";
     return deleteButton;
-  }
-};
-
-let todosUl = document.querySelector("ul");
+  },
+  setUpEventListeners: function(){
+    let todosUl = document.querySelector("ul");
 todosUl.addEventListener("click", function(event) {
 let elementClicked = event.target;
 if (elementClicked.className === "deleteButton") {
   handlers.deleteTodo(parseInt(event.target.parentNode.id));
 }
 });
+
+  }
+};
+view.setUpEventListeners();
+
